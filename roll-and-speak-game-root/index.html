@@ -33,7 +33,6 @@
       --shadow-sm: 0 4px 10px rgba(74, 52, 42, 0.12);
       --shadow-md: 0 8px 20px rgba(74, 52, 42, 0.18);
       --shadow-lg: 0 16px 32px rgba(74, 52, 42, 0.25);
-      --shadow-active: 0 0 0 4px #C4614A, 0 12px 28px rgba(196, 97, 74, 0.35);
 
       --radius-sm: 12px;
       --radius-md: 20px;
@@ -94,14 +93,15 @@
     }
 
     .header-icon {
-      width: 46px;
-      height: 46px;
+      width: 48px;
+      height: 48px;
       filter: drop-shadow(0 2px 4px rgba(74, 52, 42, 0.2));
+      object-fit: contain;
     }
 
     .header-titles h1 {
       font-family: var(--font-heading);
-      font-size: 36px;
+      font-size: 38px;
       color: var(--color-terracotta);
       line-height: 1;
     }
@@ -140,8 +140,8 @@
     }
 
     .turn-avatar {
-      width: 42px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       object-fit: contain;
       background: var(--color-sand);
@@ -149,7 +149,7 @@
 
     .turn-name {
       font-family: var(--font-heading);
-      font-size: 26px;
+      font-size: 28px;
       font-weight: 700;
       color: var(--color-brown);
     }
@@ -254,7 +254,7 @@
     .board-grid {
       display: flex;
       flex-direction: column;
-      gap: 20px;
+      gap: 18px;
       width: 100%;
     }
 
@@ -276,13 +276,13 @@
       width: 100%;
     }
 
-    /* SPACE TILE CARD */
+    /* SPACE TILE CARD (KROPNUY CONTENT) */
     .board-space {
       background: #FFFFFF;
       border: 3px solid var(--color-sand);
       border-radius: var(--radius-md);
-      padding: 10px;
-      min-height: 135px;
+      padding: 12px 10px;
+      min-height: 148px;
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -299,30 +299,28 @@
       box-shadow: var(--shadow-md);
     }
 
-    /* Active Landing Visual Cue & Pin Badge */
+    /* DYNAMIC TEAM COLORS FOR ACTIVE LANDING */
     .board-space.active-landing {
-      border-color: var(--color-terracotta);
       background: #FFFDF9;
-      box-shadow: var(--shadow-active);
       animation: pulseActiveSpace 1.5s infinite alternate;
       z-index: 10;
     }
 
     @keyframes pulseActiveSpace {
-      0% { transform: scale(1.02); box-shadow: 0 0 0 4px #C4614A, 0 10px 24px rgba(196, 97, 74, 0.3); }
-      100% { transform: scale(1.05); box-shadow: 0 0 0 8px rgba(196, 97, 74, 0.4), 0 16px 36px rgba(196, 97, 74, 0.45); }
+      0% { transform: scale(1.03); }
+      100% { transform: scale(1.06); }
     }
 
+    /* Pinned Location Tag over Active Cell */
     .active-player-pin-tag {
       position: absolute;
       top: -18px;
-      background: var(--color-terracotta);
       color: #FFFFFF;
-      font-size: 13px;
+      font-size: 14px;
       font-weight: bold;
-      padding: 3px 10px;
-      border-radius: 12px;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      padding: 4px 12px;
+      border-radius: 14px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.25);
       white-space: nowrap;
       display: flex;
       align-items: center;
@@ -361,12 +359,12 @@
 
     .space-number {
       font-family: var(--font-heading);
-      font-size: 24px;
+      font-size: 26px;
       font-weight: bold;
       color: var(--color-brown);
       background: var(--color-sand);
-      width: 32px;
-      height: 32px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -378,6 +376,7 @@
       color: #FFFFFF;
     }
 
+    /* LARGER ARTWORK ICONS IN CELLS */
     .space-icon-wrap {
       display: flex;
       align-items: center;
@@ -386,52 +385,57 @@
     }
 
     .space-art-icon {
-      width: 48px;
-      height: 48px;
+      width: 60px;
+      height: 60px;
       object-fit: contain;
-      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.15));
+      filter: drop-shadow(0 3px 6px rgba(0,0,0,0.18));
+      transition: transform 0.2s ease;
+    }
+
+    .board-space:hover .space-art-icon {
+      transform: scale(1.1);
     }
 
     .space-svg-icon {
-      width: 42px;
-      height: 42px;
+      width: 52px;
+      height: 52px;
       object-fit: contain;
-      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.12));
     }
 
     .space-label {
-      font-size: 15px;
+      font-size: 17px;
       font-weight: bold;
       text-align: center;
       color: var(--color-brown-dark);
       line-height: 1.1;
     }
 
-    /* TOKENS ON BOARD */
+    /* TOKENS ON BOARD (LARGER & DISTINCT) */
     .space-tokens-container {
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
       justify-content: center;
       align-items: center;
-      min-height: 46px;
+      min-height: 50px;
       width: 100%;
       margin-top: 4px;
     }
 
     .space-token-img {
-      width: 44px;
-      height: 44px;
+      width: 48px;
+      height: 48px;
       border-radius: 50%;
       border: 3px solid #FFFFFF;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.35);
       object-fit: contain;
       background: #FFFFFF;
       transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
     }
 
     .space-token-img:hover {
-      transform: scale(1.25) translateY(-4px);
+      transform: scale(1.3) translateY(-4px);
       z-index: 15;
     }
 
@@ -444,7 +448,7 @@
 
     .section-title, .panel-title {
       font-family: var(--font-heading);
-      font-size: 32px;
+      font-size: 34px;
       color: var(--color-terracotta);
       text-align: center;
       margin-bottom: 8px;
@@ -540,20 +544,19 @@
     }
 
     .player-status-card.active-turn {
-      border-color: var(--color-terracotta);
       background: #FFF9F6;
-      box-shadow: 0 4px 12px rgba(196, 97, 74, 0.25);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
     .player-info {
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
 
     .player-token-badge {
-      width: 44px;
-      height: 44px;
+      width: 46px;
+      height: 46px;
       border-radius: 50%;
       object-fit: contain;
       background: var(--color-sand);
@@ -562,13 +565,13 @@
 
     .player-name-text {
       font-weight: bold;
-      font-size: 20px;
+      font-size: 21px;
       color: var(--color-brown);
     }
 
     .player-pos-badge {
       font-family: var(--font-heading);
-      font-size: 24px;
+      font-size: 26px;
       font-weight: bold;
       background: var(--color-sand);
       color: var(--color-brown);
@@ -665,8 +668,8 @@
     }
 
     .modal-player-avatar, .special-action-icon, .victory-avatar, .modal-badge-icon {
-      width: 64px;
-      height: 64px;
+      width: 68px;
+      height: 68px;
       object-fit: contain;
     }
 
@@ -692,7 +695,6 @@
       line-height: 1.3;
     }
 
-    /* EDTECH 2026 FEATURES: Sentence Starters & TTS */
     .question-actions-bar {
       display: flex;
       align-items: center;
@@ -727,7 +729,6 @@
       font-style: italic;
     }
 
-    /* Speaking Timer (30s Progress Bar) */
     .speaking-timer-wrap {
       margin-top: 16px;
       background: var(--color-sand);
@@ -805,8 +806,8 @@
     }
 
     .team-input-avatar {
-      width: 36px;
-      height: 36px;
+      width: 38px;
+      height: 38px;
       object-fit: contain;
     }
 
@@ -889,12 +890,12 @@
         grid-template-columns: repeat(3, 1fr);
       }
       .board-space {
-        min-height: 110px;
+        min-height: 120px;
         padding: 6px;
       }
-      .space-art-icon, .space-svg-icon {
-        width: 36px;
-        height: 36px;
+      .space-art-icon {
+        width: 44px;
+        height: 44px;
       }
       .game-header {
         flex-direction: column;
@@ -925,7 +926,6 @@
       </div>
 
       <div class="header-actions">
-        <!-- Sound Mute/Unmute Toggle -->
         <button id="btnSoundToggle" class="btn btn-secondary btn-icon" title="Toggle Sound">🔊</button>
         <button id="btnRules" class="btn btn-secondary" title="Game Rules">📖 Rules</button>
         <button id="btnNewGame" class="btn btn-secondary" title="Restart Setup">⚙️ New Game</button>
@@ -991,7 +991,7 @@
     </div>
   </div>
 
-  <!-- QUESTION MODAL (WITH TTS & SCAFFOLDING) -->
+  <!-- QUESTION MODAL -->
   <div class="modal-overlay" id="questionModal">
     <div class="modal-card question-card">
       <div class="modal-header">
@@ -1005,7 +1005,6 @@
         <div class="question-space-badge" id="qSpaceNumber">Space #1</div>
         <p class="question-text" id="qModalText">What is your favorite autumn activity?</p>
         
-        <!-- EDTECH 2026: ESL Scaffolding & TTS Bar -->
         <div class="question-actions-bar">
           <button id="btnTTS" class="btn btn-secondary" title="Listen to pronunciation">
             🗣️ Read Aloud
@@ -1107,29 +1106,28 @@
     </div>
   </div>
 
-  <!-- EMBEDDED GAME ENGINE SCRIPT (WITH EXACT YAPX CUSTOM ARTWORK) -->
+  <!-- EMBEDDED GAME ENGINE SCRIPT (WITH FULL YAPX ARTWORK & DISTINCT TEAM HIGHLIGHTS) -->
   <script>
     /* ==========================================================================
-       YAPX IMAGE ARTWORK CONFIGURATION
+       YAPX HAND-PAINTED ASSETS CONFIGURATION (MAXIMUM USAGE)
        ========================================================================== */
     const ASSETS_CONFIG = {
       tokens: {
-        fox: 'https://i.yapx.ru/eKW4z.png',
-        squirrel: 'https://i.yapx.ru/eKW41.png',
-        hedgehog: 'https://i.yapx.ru/eKW42.png',
-        owl: 'https://i.yapx.ru/eKW44.png'
+        fox: 'https://i.yapx.ru/eKW4z.png',        // #1 Лисенок
+        squirrel: 'https://i.yapx.ru/eKW41.png',   // #2 Белочка в шапке
+        hedgehog: 'https://i.yapx.ru/eKW42.png',    // #3 Ежик в шарфе
+        owl: 'https://i.yapx.ru/eKW44.png'         // #4 Сова в шапочке
       },
       icons: {
-        mushroom: 'https://i.yapx.ru/eKW45.png',
-        acorn: 'https://i.yapx.ru/eKW46.png',
-        leaf: 'https://i.yapx.ru/eKW47.png',
-        owl: 'https://i.yapx.ru/eKW48.png',
-        squirrel_run: 'https://i.yapx.ru/eKW49.png',
-        hedgehog: 'https://i.yapx.ru/eKW5A.png'
+        mushroom: 'https://i.yapx.ru/eKW45.png',   // #5 Мухомор
+        acorn: 'https://i.yapx.ru/eKW46.png',      // #6 Желудь
+        leaf: 'https://i.yapx.ru/eKW47.png',       // #7 Дубовый лист
+        owl: 'https://i.yapx.ru/eKW48.png',        // #8 Сова разноцветная
+        squirrel_run: 'https://i.yapx.ru/eKW49.png',// #9 Бегущая белочка!
+        hedgehog: 'https://i.yapx.ru/eKW5A.png'     // #10 Спящий ежик!
       }
     };
 
-    // Vector SVGs replacing start/finish/question
     const SVG_ICONS = {
       start: `<svg class="space-svg-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M16 56V8M16 12H52L40 26L52 40H16" stroke="#6E7F4E" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
@@ -1147,9 +1145,7 @@
                 </svg>`
     };
 
-    /* ==========================================================================
-       WEB AUDIO API SYNTHESIZER SOUND ENGINE
-       ========================================================================== */
+    /* SYNTHESIZER SOUND ENGINE */
     class AudioEngine {
       constructor() {
         this.ctx = null;
@@ -1197,7 +1193,7 @@
         if (this.muted) return;
         this.init();
         const now = this.ctx.currentTime;
-        const freqs = [523.25, 659.25, 783.99]; // C5, E5, G5 triad
+        const freqs = [523.25, 659.25, 783.99];
         freqs.forEach((f, idx) => {
           const osc = this.ctx.createOscillator();
           const gain = this.ctx.createGain();
@@ -1233,9 +1229,7 @@
 
     const audio = new AudioEngine();
 
-    /* ==========================================================================
-       QUESTIONS DATA & SENTENCE STARTER FRAMES
-       ========================================================================== */
+    /* QUESTIONS DATA */
     const EMBEDDED_QUESTIONS = {
       "spaces": [
         { "id": 0, "type": "start", "text": "Start your journey through the Autumn Forest!" },
@@ -1262,11 +1256,12 @@
       ]
     };
 
+    /* UNIQUE DISTINCT COLORS FOR EACH TEAM */
     const CHARACTER_DEFS = [
-      { id: 'fox', name: 'Fox Team', icon: ASSETS_CONFIG.tokens.fox, color: '#C4614A' },
-      { id: 'squirrel', name: 'Squirrel Team', icon: ASSETS_CONFIG.tokens.squirrel, color: '#E3A857' },
-      { id: 'hedgehog', name: 'Hedgehog Team', icon: ASSETS_CONFIG.tokens.hedgehog, color: '#4A342A' },
-      { id: 'owl', name: 'Owl Team', icon: ASSETS_CONFIG.tokens.owl, color: '#6E7F4E' }
+      { id: 'fox', name: 'Fox Team', icon: ASSETS_CONFIG.tokens.fox, color: '#C4614A' },        // Terracotta Red
+      { id: 'squirrel', name: 'Squirrel Team', icon: ASSETS_CONFIG.tokens.squirrel, color: '#E3A857' },// Mustard Gold
+      { id: 'hedgehog', name: 'Hedgehog Team', icon: ASSETS_CONFIG.tokens.hedgehog, color: '#4A342A' },// Deep Brown
+      { id: 'owl', name: 'Owl Team', icon: ASSETS_CONFIG.tokens.owl, color: '#6E7F4E' }          // Olive Green
     ];
 
     let spacesData = EMBEDDED_QUESTIONS.spaces;
@@ -1374,13 +1369,11 @@
       btnRoll.addEventListener('click', rollDie);
       diceDisplay.addEventListener('click', rollDie);
 
-      // Sound Toggle
       btnSoundToggle.addEventListener('click', () => {
         audio.muted = !audio.muted;
         btnSoundToggle.textContent = audio.muted ? '🔇' : '🔊';
       });
 
-      // TTS (Text To Speech)
       btnTTS.addEventListener('click', () => {
         if ('speechSynthesis' in window) {
           const text = qModalText.textContent;
@@ -1391,12 +1384,10 @@
         }
       });
 
-      // Sentence Starter Helper Toggle
       btnHint.addEventListener('click', () => {
         scaffoldingBox.classList.toggle('active');
       });
 
-      // 30s Speaking Timer
       btnTimer.addEventListener('click', start30sTimer);
 
       btnCloseQuestion.addEventListener('click', () => {
@@ -1568,7 +1559,9 @@
       } else if (space.type === 'finish') {
         iconHtml = `<div class="space-icon-wrap">${SVG_ICONS.finish}</div><div class="space-label">FINISH</div>`;
       } else if (space.type === 'special') {
-        const iconPath = ASSETS_CONFIG.icons[space.icon] || ASSETS_CONFIG.icons.mushroom;
+        // MAXIMUM YAPX USAGE
+        const key = space.icon.replace('-', '_');
+        const iconPath = ASSETS_CONFIG.icons[space.icon] || ASSETS_CONFIG.icons[key] || ASSETS_CONFIG.icons.mushroom;
         iconHtml = `<div class="space-icon-wrap"><img src="${iconPath}" class="space-art-icon" alt="${space.icon}"></div>
                     <div class="space-label">${getSpecialLabel(space.icon)}</div>`;
       } else {
@@ -1599,17 +1592,21 @@
     }
 
     function renderTokensOnBoard() {
+      // Clear containers & pin tags
       for (let i = 0; i <= 20; i++) {
         const container = document.getElementById(`space-tokens-${i}`);
         if (container) container.innerHTML = '';
         const space = document.getElementById(`space-${i}`);
         if (space) {
           space.classList.remove('active-landing');
+          space.style.borderColor = '';
+          space.style.boxShadow = '';
           const existingTag = space.querySelector('.active-player-pin-tag');
           if (existingTag) existingTag.remove();
         }
       }
 
+      // Render tokens
       players.forEach((p) => {
         const container = document.getElementById(`space-tokens-${p.position}`);
         if (container) {
@@ -1623,11 +1620,15 @@
         }
       });
 
+      // DISTINCT TEAM HIGHLIGHT & DYNAMIC PIN TAG
       const curPlayer = players[currentPlayerIndex];
       if (curPlayer) {
         const activeSpace = document.getElementById(`space-${curPlayer.position}`);
         if (activeSpace) {
           activeSpace.classList.add('active-landing');
+          activeSpace.style.borderColor = curPlayer.color;
+          activeSpace.style.boxShadow = `0 0 0 5px ${curPlayer.color}, 0 12px 28px rgba(0,0,0,0.25)`;
+
           const pinTag = document.createElement('div');
           pinTag.className = 'active-player-pin-tag';
           pinTag.style.backgroundColor = curPlayer.color;
@@ -1644,6 +1645,9 @@
         const card = document.createElement('div');
         card.className = `player-status-card ${isCurrent ? 'active-turn' : ''}`;
         card.style.borderLeft = `6px solid ${p.color}`;
+        if (isCurrent) {
+          card.style.borderColor = p.color;
+        }
 
         card.innerHTML = `
           <div class="player-info">
@@ -1665,6 +1669,7 @@
       turnPlayerAvatar.src = p.tokenImg;
       turnPlayerName.textContent = isBonusTurn ? `${p.name} (Bonus Roll!)` : p.name;
       turnPlayerName.style.color = p.color;
+      document.getElementById('turnPlayerCard').style.borderColor = p.color;
       renderPlayersList();
     }
 
@@ -1762,7 +1767,8 @@
         openModal(questionModal);
       } else if (space.type === 'special') {
         audio.playChime();
-        const iconPath = ASSETS_CONFIG.icons[space.icon] || ASSETS_CONFIG.icons.mushroom;
+        const key = space.icon.replace('-', '_');
+        const iconPath = ASSETS_CONFIG.icons[space.icon] || ASSETS_CONFIG.icons[key] || ASSETS_CONFIG.icons.mushroom;
         specModalIcon.src = iconPath;
         specModalTitle.textContent = getSpecialTitle(space.icon);
         specModalText.textContent = space.text;
