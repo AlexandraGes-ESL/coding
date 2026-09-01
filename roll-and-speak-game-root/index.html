@@ -12,7 +12,7 @@
   
   <style>
     /* ==========================================================================
-       Roll & Speak: Autumn Forest Path - Single File Stylesheet
+       Roll & Speak: Autumn Forest Path - Modern EdTech 2026 Stylesheet
        ========================================================================== */
     :root {
       --color-cream: #F5EFE2;
@@ -30,13 +30,14 @@
       --font-main: 'Patrick Hand', cursive, sans-serif;
       --font-heading: 'Caveat', cursive, sans-serif;
 
-      --shadow-sm: 0 4px 8px rgba(74, 52, 42, 0.12);
-      --shadow-md: 0 8px 16px rgba(74, 52, 42, 0.18);
-      --shadow-lg: 0 14px 28px rgba(74, 52, 42, 0.25);
+      --shadow-sm: 0 4px 10px rgba(74, 52, 42, 0.12);
+      --shadow-md: 0 8px 20px rgba(74, 52, 42, 0.18);
+      --shadow-lg: 0 16px 32px rgba(74, 52, 42, 0.25);
+      --shadow-active: 0 0 0 4px #C4614A, 0 12px 28px rgba(196, 97, 74, 0.35);
 
-      --radius-sm: 10px;
-      --radius-md: 18px;
-      --radius-lg: 28px;
+      --radius-sm: 12px;
+      --radius-md: 20px;
+      --radius-lg: 32px;
     }
 
     * {
@@ -48,7 +49,7 @@
     body {
       font-family: var(--font-main);
       background-color: var(--color-cream);
-      background-image: url('assets/board/bg-forest-path.png');
+      background-image: url('https://i.yapx.ru/eKW6Z.jpg');
       background-size: cover;
       background-position: center;
       background-attachment: fixed;
@@ -64,7 +65,7 @@
       display: flex;
       flex-direction: column;
       min-height: 100vh;
-      max-width: 1440px;
+      max-width: 1480px;
       margin: 0 auto;
       padding: 16px;
       width: 100%;
@@ -75,8 +76,8 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      background: rgba(250, 246, 238, 0.94);
-      backdrop-filter: blur(8px);
+      background: rgba(250, 246, 238, 0.95);
+      backdrop-filter: blur(10px);
       border: 3px solid var(--color-mustard);
       border-radius: var(--radius-md);
       padding: 12px 24px;
@@ -100,7 +101,7 @@
 
     .header-titles h1 {
       font-family: var(--font-heading);
-      font-size: 34px;
+      font-size: 36px;
       color: var(--color-terracotta);
       line-height: 1;
     }
@@ -118,6 +119,7 @@
       background: var(--color-sand);
       padding: 6px 18px;
       border-radius: 40px;
+      border: 2px solid var(--color-mustard);
     }
 
     .turn-label {
@@ -131,15 +133,15 @@
       align-items: center;
       gap: 10px;
       background: #FFFFFF;
-      padding: 4px 14px 4px 6px;
+      padding: 4px 16px 4px 6px;
       border-radius: 30px;
       border: 2px solid var(--color-mustard);
       box-shadow: 0 2px 6px rgba(0,0,0,0.1);
     }
 
     .turn-avatar {
-      width: 38px;
-      height: 38px;
+      width: 42px;
+      height: 42px;
       border-radius: 50%;
       object-fit: contain;
       background: var(--color-sand);
@@ -147,13 +149,14 @@
 
     .turn-name {
       font-family: var(--font-heading);
-      font-size: 24px;
+      font-size: 26px;
       font-weight: 700;
       color: var(--color-brown);
     }
 
     .header-actions {
       display: flex;
+      align-items: center;
       gap: 10px;
     }
 
@@ -166,21 +169,22 @@
       border-radius: var(--radius-sm);
       border: 2px solid var(--color-brown);
       cursor: pointer;
-      transition: all 0.2s ease;
+      transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 8px;
       box-shadow: var(--shadow-sm);
+      user-select: none;
     }
 
     .btn:hover {
-      transform: translateY(-2px);
+      transform: translateY(-2px) scale(1.02);
       box-shadow: var(--shadow-md);
     }
 
     .btn:active {
-      transform: translateY(1px);
+      transform: translateY(1px) scale(0.98);
     }
 
     .btn-primary {
@@ -204,6 +208,11 @@
       color: #FFFFFF;
     }
 
+    .btn-icon {
+      padding: 8px 12px;
+      font-size: 22px;
+    }
+
     .btn-large {
       font-size: 26px;
       padding: 14px 28px;
@@ -218,15 +227,15 @@
       flex: 1;
     }
 
-    @media (max-width: 1024px) {
+    @media (max-width: 1080px) {
       .game-main {
         grid-template-columns: 1fr;
       }
     }
 
-    /* BOARD */
+    /* BOARD SECTION */
     .board-section {
-      background: rgba(250, 246, 238, 0.90);
+      background: rgba(250, 246, 238, 0.92);
       border: 4px solid var(--color-mustard);
       border-radius: var(--radius-lg);
       padding: 24px;
@@ -234,62 +243,97 @@
       display: flex;
       flex-direction: column;
       justify-content: center;
+      position: relative;
     }
 
     .board-container {
       width: 100%;
+      position: relative;
     }
 
     .board-grid {
       display: flex;
       flex-direction: column;
-      gap: 16px;
+      gap: 20px;
       width: 100%;
     }
 
     .board-row {
       display: grid;
       grid-template-columns: repeat(5, 1fr);
-      gap: 14px;
+      gap: 16px;
       position: relative;
     }
 
     .board-row-finish {
       display: flex;
       justify-content: center;
-      margin-top: 8px;
+      margin-top: 10px;
     }
 
     .board-row-finish .board-space {
-      max-width: 240px;
+      max-width: 260px;
       width: 100%;
     }
 
+    /* SPACE TILE CARD */
     .board-space {
       background: #FFFFFF;
       border: 3px solid var(--color-sand);
       border-radius: var(--radius-md);
       padding: 10px;
-      min-height: 125px;
+      min-height: 135px;
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: space-between;
       position: relative;
-      transition: all 0.3s ease;
+      transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
       box-shadow: var(--shadow-sm);
       user-select: none;
+      z-index: 1;
     }
 
     .board-space:hover {
-      transform: translateY(-3px);
+      transform: translateY(-4px);
       box-shadow: var(--shadow-md);
     }
 
+    /* Active Landing Visual Cue & Pin Badge */
     .board-space.active-landing {
       border-color: var(--color-terracotta);
       background: #FFFDF9;
-      box-shadow: 0 0 0 4px rgba(196, 97, 74, 0.3), var(--shadow-md);
+      box-shadow: var(--shadow-active);
+      animation: pulseActiveSpace 1.5s infinite alternate;
+      z-index: 10;
+    }
+
+    @keyframes pulseActiveSpace {
+      0% { transform: scale(1.02); box-shadow: 0 0 0 4px #C4614A, 0 10px 24px rgba(196, 97, 74, 0.3); }
+      100% { transform: scale(1.05); box-shadow: 0 0 0 8px rgba(196, 97, 74, 0.4), 0 16px 36px rgba(196, 97, 74, 0.45); }
+    }
+
+    .active-player-pin-tag {
+      position: absolute;
+      top: -18px;
+      background: var(--color-terracotta);
+      color: #FFFFFF;
+      font-size: 13px;
+      font-weight: bold;
+      padding: 3px 10px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      white-space: nowrap;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      animation: pinBounce 0.8s infinite alternate ease-in-out;
+      z-index: 20;
+    }
+
+    @keyframes pinBounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-5px); }
     }
 
     .space-type-start {
@@ -341,15 +385,18 @@
       margin: 4px 0;
     }
 
-    .space-icon {
-      width: 44px;
-      height: 44px;
+    .space-art-icon {
+      width: 48px;
+      height: 48px;
       object-fit: contain;
+      filter: drop-shadow(0 2px 5px rgba(0,0,0,0.15));
     }
 
-    .space-q-bubble {
-      font-size: 32px;
-      line-height: 1;
+    .space-svg-icon {
+      width: 42px;
+      height: 42px;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
     }
 
     .space-label {
@@ -360,26 +407,32 @@
       line-height: 1.1;
     }
 
+    /* TOKENS ON BOARD */
     .space-tokens-container {
       display: flex;
       flex-wrap: wrap;
-      gap: 4px;
+      gap: 6px;
       justify-content: center;
       align-items: center;
-      min-height: 36px;
+      min-height: 46px;
       width: 100%;
       margin-top: 4px;
     }
 
     .space-token-img {
-      width: 34px;
-      height: 34px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
-      border: 2px solid #FFFFFF;
-      box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+      border: 3px solid #FFFFFF;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.3);
       object-fit: contain;
       background: #FFFFFF;
       transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .space-token-img:hover {
+      transform: scale(1.25) translateY(-4px);
+      z-index: 15;
     }
 
     /* SIDEBAR */
@@ -391,10 +444,10 @@
 
     .section-title, .panel-title {
       font-family: var(--font-heading);
-      font-size: 30px;
+      font-size: 32px;
       color: var(--color-terracotta);
       text-align: center;
-      margin-bottom: 10px;
+      margin-bottom: 8px;
     }
 
     .dice-box {
@@ -482,14 +535,14 @@
       background: #FFFFFF;
       border: 2px solid var(--color-sand);
       border-radius: var(--radius-sm);
-      padding: 8px 12px;
+      padding: 10px 14px;
       transition: all 0.3s ease;
     }
 
     .player-status-card.active-turn {
       border-color: var(--color-terracotta);
       background: #FFF9F6;
-      box-shadow: 0 2px 8px rgba(196, 97, 74, 0.25);
+      box-shadow: 0 4px 12px rgba(196, 97, 74, 0.25);
     }
 
     .player-info {
@@ -499,8 +552,8 @@
     }
 
     .player-token-badge {
-      width: 38px;
-      height: 38px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       object-fit: contain;
       background: var(--color-sand);
@@ -509,18 +562,18 @@
 
     .player-name-text {
       font-weight: bold;
-      font-size: 19px;
+      font-size: 20px;
       color: var(--color-brown);
     }
 
     .player-pos-badge {
       font-family: var(--font-heading);
-      font-size: 22px;
+      font-size: 24px;
       font-weight: bold;
       background: var(--color-sand);
       color: var(--color-brown);
-      padding: 2px 10px;
-      border-radius: 14px;
+      padding: 2px 12px;
+      border-radius: 16px;
     }
 
     .status-skipped {
@@ -539,8 +592,8 @@
       left: 0;
       right: 0;
       bottom: 0;
-      background: rgba(50, 33, 26, 0.7);
-      backdrop-filter: blur(5px);
+      background: rgba(50, 33, 26, 0.75);
+      backdrop-filter: blur(6px);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -561,7 +614,7 @@
       border: 4px solid var(--color-mustard);
       border-radius: var(--radius-lg);
       padding: 28px;
-      max-width: 580px;
+      max-width: 620px;
       width: 100%;
       box-shadow: var(--shadow-lg);
       position: relative;
@@ -584,13 +637,13 @@
 
     .modal-header h2 {
       font-family: var(--font-heading);
-      font-size: 36px;
+      font-size: 38px;
       color: var(--color-terracotta);
       line-height: 1.1;
     }
 
     .modal-subtitle {
-      font-size: 18px;
+      font-size: 19px;
       color: var(--color-olive-dark);
       margin-bottom: 20px;
     }
@@ -612,8 +665,8 @@
     }
 
     .modal-player-avatar, .special-action-icon, .victory-avatar, .modal-badge-icon {
-      width: 60px;
-      height: 60px;
+      width: 64px;
+      height: 64px;
       object-fit: contain;
     }
 
@@ -624,19 +677,71 @@
     .question-space-badge {
       display: inline-block;
       font-family: var(--font-heading);
-      font-size: 20px;
+      font-size: 22px;
       background: var(--color-mustard);
       color: #FFFFFF;
-      padding: 2px 12px;
-      border-radius: 12px;
+      padding: 2px 14px;
+      border-radius: 14px;
       margin-bottom: 12px;
     }
 
     .question-text, .special-text {
-      font-size: 26px;
+      font-size: 28px;
       font-weight: bold;
       color: var(--color-brown-dark);
       line-height: 1.3;
+    }
+
+    /* EDTECH 2026 FEATURES: Sentence Starters & TTS */
+    .question-actions-bar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+
+    .scaffolding-box {
+      background: #FFFFFF;
+      border: 2px dashed var(--color-mustard);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      margin-top: 14px;
+      display: none;
+    }
+
+    .scaffolding-box.active {
+      display: block;
+    }
+
+    .scaffolding-title {
+      font-size: 16px;
+      font-weight: bold;
+      color: var(--color-olive-dark);
+      margin-bottom: 4px;
+    }
+
+    .scaffolding-text {
+      font-size: 18px;
+      color: var(--color-brown);
+      font-style: italic;
+    }
+
+    /* Speaking Timer (30s Progress Bar) */
+    .speaking-timer-wrap {
+      margin-top: 16px;
+      background: var(--color-sand);
+      border-radius: 10px;
+      height: 10px;
+      overflow: hidden;
+      display: none;
+    }
+
+    .speaking-timer-bar {
+      height: 100%;
+      width: 100%;
+      background: var(--color-terracotta);
+      transition: width 1s linear;
     }
 
     .modal-footer {
@@ -738,13 +843,13 @@
     }
 
     .winner-announcement {
-      font-size: 30px;
+      font-size: 32px;
       color: var(--color-brown);
       margin-bottom: 8px;
     }
 
     .winner-subtext {
-      font-size: 20px;
+      font-size: 22px;
       color: var(--color-olive-dark);
     }
 
@@ -784,12 +889,12 @@
         grid-template-columns: repeat(3, 1fr);
       }
       .board-space {
-        min-height: 100px;
+        min-height: 110px;
         padding: 6px;
       }
-      .space-icon {
-        width: 32px;
-        height: 32px;
+      .space-art-icon, .space-svg-icon {
+        width: 36px;
+        height: 36px;
       }
       .game-header {
         flex-direction: column;
@@ -804,7 +909,7 @@
     <!-- HEADER -->
     <header class="game-header">
       <div class="header-brand">
-        <img src="assets/icons/icon-leaf.png" alt="Leaf" class="header-icon">
+        <img src="https://i.yapx.ru/eKW47.png" alt="Leaf" class="header-icon">
         <div class="header-titles">
           <h1>Roll &amp; Speak</h1>
           <span class="subtitle">Autumn Forest Path</span>
@@ -814,12 +919,14 @@
       <div class="turn-indicator" id="turnIndicator">
         <span class="turn-label">Current Turn:</span>
         <div class="turn-player-card" id="turnPlayerCard">
-          <img src="assets/tokens/token-fox.png" id="turnPlayerToken" alt="Player Token" class="turn-avatar">
+          <img src="https://i.yapx.ru/eKW4z.png" id="turnPlayerToken" alt="Player Token" class="turn-avatar">
           <span id="turnPlayerName" class="turn-name">Fox Team</span>
         </div>
       </div>
 
       <div class="header-actions">
+        <!-- Sound Mute/Unmute Toggle -->
+        <button id="btnSoundToggle" class="btn btn-secondary btn-icon" title="Toggle Sound">🔊</button>
         <button id="btnRules" class="btn btn-secondary" title="Game Rules">📖 Rules</button>
         <button id="btnNewGame" class="btn btn-secondary" title="Restart Setup">⚙️ New Game</button>
       </div>
@@ -857,7 +964,7 @@
   <div class="modal-overlay active" id="setupModal">
     <div class="modal-card setup-card">
       <div class="modal-header">
-        <img src="assets/icons/icon-owl.png" alt="Owl" class="modal-badge-icon">
+        <img src="https://i.yapx.ru/eKW44.png" alt="Owl" class="modal-badge-icon">
         <h2>Welcome to Autumn Forest!</h2>
       </div>
       <p class="modal-subtitle">Choose players and prepare for your ESL Speaking Journey</p>
@@ -884,10 +991,11 @@
     </div>
   </div>
 
+  <!-- QUESTION MODAL (WITH TTS & SCAFFOLDING) -->
   <div class="modal-overlay" id="questionModal">
     <div class="modal-card question-card">
       <div class="modal-header">
-        <img src="assets/tokens/token-fox.png" id="qModalAvatar" alt="Player" class="modal-player-avatar">
+        <img src="https://i.yapx.ru/eKW4z.png" id="qModalAvatar" alt="Player" class="modal-player-avatar">
         <div>
           <span class="modal-tag">Speaking Question</span>
           <h2 id="qModalPlayerName">Fox Team's Turn</h2>
@@ -896,6 +1004,28 @@
       <div class="modal-body">
         <div class="question-space-badge" id="qSpaceNumber">Space #1</div>
         <p class="question-text" id="qModalText">What is your favorite autumn activity?</p>
+        
+        <!-- EDTECH 2026: ESL Scaffolding & TTS Bar -->
+        <div class="question-actions-bar">
+          <button id="btnTTS" class="btn btn-secondary" title="Listen to pronunciation">
+            🗣️ Read Aloud
+          </button>
+          <button id="btnHint" class="btn btn-secondary" title="Sentence starter helper">
+            💡 Sentence Starter
+          </button>
+          <button id="btnTimer" class="btn btn-secondary" title="30-second speaking timer">
+            ⏱️ 30s Timer
+          </button>
+        </div>
+
+        <div class="scaffolding-box" id="scaffoldingBox">
+          <div class="scaffolding-title">Sentence Frame Helper:</div>
+          <div class="scaffolding-text" id="scaffoldingText">"My favorite autumn activity is... because..."</div>
+        </div>
+
+        <div class="speaking-timer-wrap" id="speakingTimerWrap">
+          <div class="speaking-timer-bar" id="speakingTimerBar"></div>
+        </div>
       </div>
       <div class="modal-footer">
         <button id="btnCloseQuestion" class="btn btn-primary">
@@ -908,7 +1038,7 @@
   <div class="modal-overlay" id="specialModal">
     <div class="modal-card special-card">
       <div class="modal-header">
-        <img src="assets/icons/icon-mushroom.png" id="specModalIcon" alt="Special Icon" class="special-action-icon">
+        <img src="https://i.yapx.ru/eKW45.png" id="specModalIcon" alt="Special Icon" class="special-action-icon">
         <div>
           <span class="modal-tag special-tag">Forest Event!</span>
           <h2 id="specModalTitle">Mushroom Patch!</h2>
@@ -929,7 +1059,7 @@
     <div class="modal-card victory-card">
       <div class="confetti-container" id="confettiContainer"></div>
       <div class="modal-header">
-        <img src="assets/tokens/token-fox.png" id="vicModalAvatar" alt="Winner" class="victory-avatar">
+        <img src="https://i.yapx.ru/eKW4z.png" id="vicModalAvatar" alt="Winner" class="victory-avatar">
         <h2>🎉 Victory in the Forest!</h2>
       </div>
       <div class="modal-body">
@@ -958,7 +1088,7 @@
         <ul>
           <li><strong>Goal:</strong> Be the first team/player to navigate through space 20 at the end of the forest path!</li>
           <li><strong>Rolling:</strong> Click <em>"Roll the Die!"</em> or press <kbd>Spacebar</kbd> on your turn to roll 1–6.</li>
-          <li><strong>Speaking Questions (💬):</strong> Answer the prompt out loud in English before your turn ends.</li>
+          <li><strong>Speaking Questions (💬):</strong> Answer the prompt out loud in English before your turn ends. Use 🗣️ <strong>Read Aloud</strong> or 💡 <strong>Sentence Starters</strong> for help!</li>
           <li><strong>Special Forest Events:</strong>
             <ul>
               <li>🍄 <strong>Mushroom:</strong> Move backward / forward or act out.</li>
@@ -977,40 +1107,166 @@
     </div>
   </div>
 
-  <!-- EMBEDDED GAME ENGINE SCRIPT -->
+  <!-- EMBEDDED GAME ENGINE SCRIPT (WITH EXACT YAPX CUSTOM ARTWORK) -->
   <script>
-    // Embedded Questions Data (Zero external fetch delays)
+    /* ==========================================================================
+       YAPX IMAGE ARTWORK CONFIGURATION
+       ========================================================================== */
+    const ASSETS_CONFIG = {
+      tokens: {
+        fox: 'https://i.yapx.ru/eKW4z.png',
+        squirrel: 'https://i.yapx.ru/eKW41.png',
+        hedgehog: 'https://i.yapx.ru/eKW42.png',
+        owl: 'https://i.yapx.ru/eKW44.png'
+      },
+      icons: {
+        mushroom: 'https://i.yapx.ru/eKW45.png',
+        acorn: 'https://i.yapx.ru/eKW46.png',
+        leaf: 'https://i.yapx.ru/eKW47.png',
+        owl: 'https://i.yapx.ru/eKW48.png',
+        squirrel_run: 'https://i.yapx.ru/eKW49.png',
+        hedgehog: 'https://i.yapx.ru/eKW5A.png'
+      }
+    };
+
+    // Vector SVGs replacing start/finish/question
+    const SVG_ICONS = {
+      start: `<svg class="space-svg-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M16 56V8M16 12H52L40 26L52 40H16" stroke="#6E7F4E" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+              </svg>`,
+      finish: `<svg class="space-svg-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M18 12H46V28C46 36 38 42 32 42C26 42 18 36 18 28V12Z" fill="#E3A857" stroke="#4A342A" stroke-width="4"/>
+                <path d="M32 42V52M20 52H44" stroke="#4A342A" stroke-width="5" stroke-linecap="round"/>
+                <path d="M18 18H10C7.7 18 6 19.7 6 22V24C6 28.4 9.6 32 14 32H18" stroke="#4A342A" stroke-width="4"/>
+                <path d="M46 18H54C56.3 18 58 19.7 58 22V24C58 28.4 54.4 32 50 32H46" stroke="#4A342A" stroke-width="4"/>
+              </svg>`,
+      question: `<svg class="space-svg-icon" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M12 16C12 11.6 15.6 8 20 8H44C48.4 8 52 11.6 52 16V36C52 40.4 48.4 44 44 44H26L14 54V44H20C15.6 44 12 40.4 12 36V16Z" fill="#FAF6EE" stroke="#E3A857" stroke-width="4"/>
+                  <path d="M28 22C28 19.8 29.8 18 32 18C34.2 18 36 19.8 36 22C36 24.2 34 25.5 32 27V30" stroke="#C4614A" stroke-width="4" stroke-linecap="round"/>
+                  <circle cx="32" cy="36" r="2.5" fill="#C4614A"/>
+                </svg>`
+    };
+
+    /* ==========================================================================
+       WEB AUDIO API SYNTHESIZER SOUND ENGINE
+       ========================================================================== */
+    class AudioEngine {
+      constructor() {
+        this.ctx = null;
+        this.muted = false;
+      }
+      init() {
+        if (!this.ctx) {
+          const AudioContext = window.AudioContext || window.webkitAudioContext;
+          this.ctx = new AudioContext();
+        }
+      }
+      playDice() {
+        if (this.muted) return;
+        this.init();
+        const now = this.ctx.currentTime;
+        for (let i = 0; i < 5; i++) {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(150 + Math.random() * 200, now + i * 0.06);
+          gain.gain.setValueAtTime(0.2, now + i * 0.06);
+          gain.gain.exponentialRampToValueAtTime(0.01, now + i * 0.06 + 0.05);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(now + i * 0.06);
+          osc.stop(now + i * 0.06 + 0.05);
+        }
+      }
+      playStep() {
+        if (this.muted) return;
+        this.init();
+        const osc = this.ctx.createOscillator();
+        const gain = this.ctx.createGain();
+        osc.type = 'sine';
+        osc.frequency.setValueAtTime(300, this.ctx.currentTime);
+        osc.frequency.exponentialRampToValueAtTime(600, this.ctx.currentTime + 0.08);
+        gain.gain.setValueAtTime(0.25, this.ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.01, this.ctx.currentTime + 0.08);
+        osc.connect(gain);
+        gain.connect(this.ctx.destination);
+        osc.start();
+        osc.stop(this.ctx.currentTime + 0.08);
+      }
+      playChime() {
+        if (this.muted) return;
+        this.init();
+        const now = this.ctx.currentTime;
+        const freqs = [523.25, 659.25, 783.99]; // C5, E5, G5 triad
+        freqs.forEach((f, idx) => {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(f, now + idx * 0.08);
+          gain.gain.setValueAtTime(0.2, now + idx * 0.08);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.08 + 0.4);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(now + idx * 0.08);
+          osc.stop(now + idx * 0.08 + 0.4);
+        });
+      }
+      playVictory() {
+        if (this.muted) return;
+        this.init();
+        const now = this.ctx.currentTime;
+        const freqs = [261.63, 329.63, 392.00, 523.25, 659.25, 783.99, 1046.50];
+        freqs.forEach((f, idx) => {
+          const osc = this.ctx.createOscillator();
+          const gain = this.ctx.createGain();
+          osc.type = 'triangle';
+          osc.frequency.setValueAtTime(f, now + idx * 0.1);
+          gain.gain.setValueAtTime(0.3, now + idx * 0.1);
+          gain.gain.exponentialRampToValueAtTime(0.001, now + idx * 0.1 + 0.6);
+          osc.connect(gain);
+          gain.connect(this.ctx.destination);
+          osc.start(now + idx * 0.1);
+          osc.stop(now + idx * 0.1 + 0.6);
+        });
+      }
+    }
+
+    const audio = new AudioEngine();
+
+    /* ==========================================================================
+       QUESTIONS DATA & SENTENCE STARTER FRAMES
+       ========================================================================== */
     const EMBEDDED_QUESTIONS = {
       "spaces": [
         { "id": 0, "type": "start", "text": "Start your journey through the Autumn Forest!" },
-        { "id": 1, "type": "question", "text": "What is your favorite autumn activity and why?" },
-        { "id": 2, "type": "question", "text": "Describe your favorite animal using 3 adjectives." },
+        { "id": 1, "type": "question", "text": "What is your favorite autumn activity and why?", "starter": "My favorite autumn activity is... because..." },
+        { "id": 2, "type": "question", "text": "Describe your favorite animal using 3 adjectives.", "starter": "My favorite animal is... It is..., ..., and..." },
         { "id": 3, "type": "special", "icon": "mushroom", "text": "🍄 Mushroom Patch! Slip on a damp mushroom. Go back 2 spaces.", "action": { "move": -2 } },
-        { "id": 4, "type": "question", "text": "Talk about your best friend. What do you like doing together?" },
+        { "id": 4, "type": "question", "text": "Talk about your best friend. What do you like doing together?", "starter": "My best friend is... We like to..." },
         { "id": 5, "type": "special", "icon": "acorn", "text": "🌰 Lucky Acorn! You found a crunchy treat. Move forward 1 space.", "action": { "move": 1 } },
-        { "id": 6, "type": "question", "text": "What do you usually eat for breakfast on cold autumn mornings?" },
+        { "id": 6, "type": "question", "text": "What do you usually eat for breakfast on cold autumn mornings?", "starter": "On cold mornings, I usually eat..." },
         { "id": 7, "type": "special", "icon": "leaf", "text": "🍂 Swirling Leaf! A gust of autumn wind boosts you! Take a bonus roll!", "action": { "bonus": true } },
-        { "id": 8, "type": "question", "text": "Which season do you like best: Autumn, Winter, Spring, or Summer?" },
+        { "id": 8, "type": "question", "text": "Which season do you like best: Autumn, Winter, Spring, or Summer?", "starter": "I like... best because..." },
         { "id": 9, "type": "special", "icon": "hedgehog", "text": "🦔 Sleepy Hedgehog! You stopped to nap in warm leaves. Skip your next turn.", "action": { "skip": true } },
-        { "id": 10, "type": "question", "text": "Tell us about something fun you did last weekend." },
+        { "id": 10, "type": "question", "text": "Tell us about something fun you did last weekend.", "starter": "Last weekend, I..." },
         { "id": 11, "type": "special", "icon": "owl", "text": "🦉 Wise Owl! Wisdom share: Ask another player any question in English!", "action": { "ask_other": true } },
-        { "id": 12, "type": "question", "text": "Name 3 things you can see in an autumn forest." },
-        { "id": 13, "type": "special", "icon": "squirrel-run", "text": "🐿️ Squirrel Sprint! Dash along the treetops! Move forward 2 spaces.", "action": { "move": 2 } },
-        { "id": 14, "type": "question", "text": "What is your favorite book, movie, or fairy tale?" },
+        { "id": 12, "type": "question", "text": "Name 3 things you can see in an autumn forest.", "starter": "In an autumn forest, I can see..." },
+        { "id": 13, "type": "special", "icon": "squirrel_run", "text": "🐿️ Squirrel Sprint! Dash along the treetops! Move forward 2 spaces.", "action": { "move": 2 } },
+        { "id": 14, "type": "question", "text": "What is your favorite book, movie, or fairy tale?", "starter": "My favorite story/movie is..." },
         { "id": 15, "type": "special", "icon": "mushroom", "text": "🎭 Forest Charades! Act out your favorite animal without speaking for 20 seconds!", "action": { "act_out": true } },
-        { "id": 16, "type": "question", "text": "What clothes do you wear when it rains outside?" },
+        { "id": 16, "type": "question", "text": "What clothes do you wear when it rains outside?", "starter": "When it rains, I wear..." },
         { "id": 17, "type": "special", "icon": "acorn", "text": "🌰 Heavy Acorn! Your backpack is too heavy. Go back 1 space.", "action": { "move": -1 } },
-        { "id": 18, "type": "question", "text": "If you could have any superpower in the forest, what would it be?" },
-        { "id": 19, "type": "question", "text": "What are you looking forward to doing this month?" },
+        { "id": 18, "type": "question", "text": "If you could have any superpower in the forest, what would it be?", "starter": "If I had a superpower, I would..." },
+        { "id": 19, "type": "question", "text": "What are you looking forward to doing this month?", "starter": "This month, I am looking forward to..." },
         { "id": 20, "type": "finish", "text": "🎉 You made it through the Autumn Forest! Congratulations!" }
       ]
     };
 
     const CHARACTER_DEFS = [
-      { id: 'fox', name: 'Fox Team', icon: 'assets/tokens/token-fox.png', color: '#C4614A' },
-      { id: 'owl', name: 'Owl Team', icon: 'assets/tokens/token-owl.png', color: '#6E7F4E' },
-      { id: 'squirrel', name: 'Squirrel Team', icon: 'assets/tokens/token-squirrel.png', color: '#E3A857' },
-      { id: 'hedgehog', name: 'Hedgehog Team', icon: 'assets/tokens/token-hedgehog.png', color: '#4A342A' }
+      { id: 'fox', name: 'Fox Team', icon: ASSETS_CONFIG.tokens.fox, color: '#C4614A' },
+      { id: 'squirrel', name: 'Squirrel Team', icon: ASSETS_CONFIG.tokens.squirrel, color: '#E3A857' },
+      { id: 'hedgehog', name: 'Hedgehog Team', icon: ASSETS_CONFIG.tokens.hedgehog, color: '#4A342A' },
+      { id: 'owl', name: 'Owl Team', icon: ASSETS_CONFIG.tokens.owl, color: '#6E7F4E' }
     ];
 
     let spacesData = EMBEDDED_QUESTIONS.spaces;
@@ -1021,6 +1277,7 @@
     let isBonusTurn = false;
     let pendingSpecialAction = null;
     let selectedPlayerCount = 2;
+    let timerInterval = null;
 
     const setupModal = document.getElementById('setupModal');
     const setupForm = document.getElementById('setupForm');
@@ -1041,6 +1298,14 @@
     const qSpaceNumber = document.getElementById('qSpaceNumber');
     const btnCloseQuestion = document.getElementById('btnCloseQuestion');
 
+    const btnTTS = document.getElementById('btnTTS');
+    const btnHint = document.getElementById('btnHint');
+    const btnTimer = document.getElementById('btnTimer');
+    const scaffoldingBox = document.getElementById('scaffoldingBox');
+    const scaffoldingText = document.getElementById('scaffoldingText');
+    const speakingTimerWrap = document.getElementById('speakingTimerWrap');
+    const speakingTimerBar = document.getElementById('speakingTimerBar');
+
     const specialModal = document.getElementById('specialModal');
     const specModalIcon = document.getElementById('specModalIcon');
     const specModalTitle = document.getElementById('specModalTitle');
@@ -1057,9 +1322,9 @@
     const btnRules = document.getElementById('btnRules');
     const btnCloseRules = document.getElementById('btnCloseRules');
     const btnNewGame = document.getElementById('btnNewGame');
+    const btnSoundToggle = document.getElementById('btnSoundToggle');
 
     document.addEventListener('DOMContentLoaded', async () => {
-      // Attempt external fetch if available, fallback silently
       try {
         const res = await fetch('data/questions.json');
         if (res.ok) {
@@ -1109,7 +1374,33 @@
       btnRoll.addEventListener('click', rollDie);
       diceDisplay.addEventListener('click', rollDie);
 
+      // Sound Toggle
+      btnSoundToggle.addEventListener('click', () => {
+        audio.muted = !audio.muted;
+        btnSoundToggle.textContent = audio.muted ? '🔇' : '🔊';
+      });
+
+      // TTS (Text To Speech)
+      btnTTS.addEventListener('click', () => {
+        if ('speechSynthesis' in window) {
+          const text = qModalText.textContent;
+          const utterance = new SpeechSynthesisUtterance(text);
+          utterance.lang = 'en-US';
+          utterance.rate = 0.9;
+          window.speechSynthesis.speak(utterance);
+        }
+      });
+
+      // Sentence Starter Helper Toggle
+      btnHint.addEventListener('click', () => {
+        scaffoldingBox.classList.toggle('active');
+      });
+
+      // 30s Speaking Timer
+      btnTimer.addEventListener('click', start30sTimer);
+
       btnCloseQuestion.addEventListener('click', () => {
+        stopTimer();
         closeModal(questionModal);
         advanceTurn();
       });
@@ -1170,6 +1461,29 @@
           if (activeModal && activeModal !== setupModal) closeModal(activeModal);
         }
       });
+    }
+
+    function start30sTimer() {
+      stopTimer();
+      speakingTimerWrap.style.display = 'block';
+      speakingTimerBar.style.width = '100%';
+      let timeLeft = 30;
+      timerInterval = setInterval(() => {
+        timeLeft--;
+        const percentage = (timeLeft / 30) * 100;
+        speakingTimerBar.style.width = `${percentage}%`;
+        if (timeLeft <= 0) {
+          stopTimer();
+        }
+      }, 1000);
+    }
+
+    function stopTimer() {
+      if (timerInterval) {
+        clearInterval(timerInterval);
+        timerInterval = null;
+      }
+      speakingTimerWrap.style.display = 'none';
     }
 
     function startGame() {
@@ -1250,14 +1564,15 @@
 
       let iconHtml = '';
       if (space.type === 'start') {
-        iconHtml = `<div class="space-icon-wrap"><span class="space-q-bubble">🏁</span></div><div class="space-label">START</div>`;
+        iconHtml = `<div class="space-icon-wrap">${SVG_ICONS.start}</div><div class="space-label">START</div>`;
       } else if (space.type === 'finish') {
-        iconHtml = `<div class="space-icon-wrap"><span class="space-q-bubble">🏆</span></div><div class="space-label">FINISH</div>`;
+        iconHtml = `<div class="space-icon-wrap">${SVG_ICONS.finish}</div><div class="space-label">FINISH</div>`;
       } else if (space.type === 'special') {
-        iconHtml = `<div class="space-icon-wrap"><img src="assets/icons/icon-${space.icon}.png" class="space-icon" alt="${space.icon}"></div>
+        const iconPath = ASSETS_CONFIG.icons[space.icon] || ASSETS_CONFIG.icons.mushroom;
+        iconHtml = `<div class="space-icon-wrap"><img src="${iconPath}" class="space-art-icon" alt="${space.icon}"></div>
                     <div class="space-label">${getSpecialLabel(space.icon)}</div>`;
       } else {
-        iconHtml = `<div class="space-icon-wrap"><span class="space-q-bubble">💬</span></div><div class="space-label">QUESTION</div>`;
+        iconHtml = `<div class="space-icon-wrap">${SVG_ICONS.question}</div><div class="space-label">QUESTION</div>`;
       }
 
       el.innerHTML = `
@@ -1277,6 +1592,7 @@
         case 'leaf': return 'Bonus Roll';
         case 'hedgehog': return 'Rest Nap';
         case 'owl': return 'Wise Ask';
+        case 'squirrel_run':
         case 'squirrel-run': return 'Sprint';
         default: return 'Special';
       }
@@ -1286,9 +1602,13 @@
       for (let i = 0; i <= 20; i++) {
         const container = document.getElementById(`space-tokens-${i}`);
         if (container) container.innerHTML = '';
+        const space = document.getElementById(`space-${i}`);
+        if (space) {
+          space.classList.remove('active-landing');
+          const existingTag = space.querySelector('.active-player-pin-tag');
+          if (existingTag) existingTag.remove();
+        }
       }
-
-      document.querySelectorAll('.board-space').forEach(el => el.classList.remove('active-landing'));
 
       players.forEach((p) => {
         const container = document.getElementById(`space-tokens-${p.position}`);
@@ -1297,7 +1617,7 @@
           img.src = p.tokenImg;
           img.alt = p.name;
           img.className = 'space-token-img';
-          img.title = `${p.name} (Position: ${p.position})`;
+          img.title = `${p.name} (Space #${p.position})`;
           img.style.borderColor = p.color;
           container.appendChild(img);
         }
@@ -1306,7 +1626,14 @@
       const curPlayer = players[currentPlayerIndex];
       if (curPlayer) {
         const activeSpace = document.getElementById(`space-${curPlayer.position}`);
-        if (activeSpace) activeSpace.classList.add('active-landing');
+        if (activeSpace) {
+          activeSpace.classList.add('active-landing');
+          const pinTag = document.createElement('div');
+          pinTag.className = 'active-player-pin-tag';
+          pinTag.style.backgroundColor = curPlayer.color;
+          pinTag.innerHTML = `📍 ${curPlayer.name.toUpperCase()}`;
+          activeSpace.prepend(pinTag);
+        }
       }
     }
 
@@ -1349,6 +1676,7 @@
       isRolling = true;
       btnRoll.disabled = true;
 
+      audio.playDice();
       diceImage.classList.add('rolling');
       let counter = 0;
       const rollInterval = setInterval(() => {
@@ -1377,9 +1705,10 @@
 
       while (player.position < targetPos) {
         player.position++;
+        audio.playStep();
         renderTokensOnBoard();
         renderPlayersList();
-        await delay(300);
+        await delay(320);
       }
 
       isMoving = false;
@@ -1396,9 +1725,10 @@
       const direction = steps > 0 ? 1 : -1;
       while (player.position !== targetPos) {
         player.position += direction;
+        audio.playStep();
         renderTokensOnBoard();
         renderPlayersList();
-        await delay(300);
+        await delay(320);
       }
 
       isMoving = false;
@@ -1419,14 +1749,21 @@
       }
 
       if (space.type === 'question') {
+        audio.playChime();
         qModalAvatar.src = player.tokenImg;
         qModalPlayerName.textContent = `${player.name}'s Question`;
         qModalPlayerName.style.color = player.color;
         qSpaceNumber.textContent = `Space #${space.id}`;
         qModalText.textContent = space.text;
+
+        scaffoldingBox.classList.remove('active');
+        scaffoldingText.textContent = space.starter || `"In my opinion, I think..."`;
+
         openModal(questionModal);
       } else if (space.type === 'special') {
-        specModalIcon.src = `assets/icons/icon-${space.icon}.png`;
+        audio.playChime();
+        const iconPath = ASSETS_CONFIG.icons[space.icon] || ASSETS_CONFIG.icons.mushroom;
+        specModalIcon.src = iconPath;
         specModalTitle.textContent = getSpecialTitle(space.icon);
         specModalText.textContent = space.text;
         pendingSpecialAction = space.action || null;
@@ -1443,6 +1780,7 @@
         case 'leaf': return 'Autumn Wind!';
         case 'hedgehog': return 'Sleepy Rest!';
         case 'owl': return 'Wise Owl Advice!';
+        case 'squirrel_run':
         case 'squirrel-run': return 'Squirrel Sprint!';
         default: return 'Special Event!';
       }
@@ -1468,6 +1806,7 @@
     }
 
     function showVictoryScreen(winnerPlayer) {
+      audio.playVictory();
       vicModalAvatar.src = winnerPlayer.tokenImg;
       vicModalWinnerName.textContent = winnerPlayer.name;
       vicModalWinnerName.style.color = winnerPlayer.color;
