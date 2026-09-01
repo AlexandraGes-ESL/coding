@@ -12,7 +12,7 @@
   
   <style>
     /* ==========================================================================
-       Roll & Speak: Autumn Forest Path - Ultimate EdTech 2026 Single HTML Engine
+       Roll & Speak: Autumn Forest Path - Ultimate EdTech 2026 Engine
        ========================================================================== */
     :root {
       --color-cream: #F5EFE2;
@@ -1437,15 +1437,7 @@
     const btnSoundToggle = document.getElementById('btnSoundToggle');
 
     document.addEventListener('DOMContentLoaded', async () => {
-      try {
-        const res = await fetch('data/questions.json');
-        if (res.ok) {
-          const data = await res.json();
-          if (data.spaces) spacesData = data.spaces;
-        }
-      } catch (e) {
-        console.log('Using embedded questions dataset.');
-      }
+      // Priority to embedded dataset to guarantee Sentence Starters
       initSetupUI();
       setupEventListeners();
     });
