@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roll & Speak: Autumn Forest Path</title>
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Patrick+Hand&display=swap" rel="stylesheet">
+  
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-container">
+    
+    <!-- HEADER -->
+    <header class="game-header">
+      <div class="header-brand">
+        <img src="assets/icons/icon-leaf.png" alt="Leaf" class="header-icon">
+        <div class="header-titles">
+          <h1>Roll &amp; Speak</h1>
+          <span class="subtitle">Autumn Forest Path</span>
+        </div>
+      </div>
+
+      <!-- Current Turn Display -->
+      <div class="turn-indicator" id="turnIndicator">
+        <span class="turn-label">Current Turn:</span>
+        <div class="turn-player-card" id="turnPlayerCard">
+          <img src="assets/tokens/token-fox.png" id="turnPlayerToken" alt="Player Token" class="turn-avatar">
+          <span id="turnPlayerName" class="turn-name">Fox Team</span>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="header-actions">
+        <button id="btnRules" class="btn btn-secondary" title="Game Rules">📖 Rules</button>
+
+        <button id="btnNewGame" class="btn btn-secondary" title="Restart Setup">⚙️ New Game</button>
+      </div>
+    </header>
+
+    <!-- MAIN GAME LAYOUT -->
+    <main class="game-main">
+      
+      <!-- BOARD SECTION -->
+      <section class="board-section">
+        <div class="board-container" id="boardContainer">
+          <!-- Winding Path Grid rendered dynamically via JS -->
+          <div class="board-grid" id="boardGrid"></div>
+        </div>
+      </section>
+
+      <!-- SIDEBAR CONTROLS & PLAYERS -->
+      <aside class="sidebar-section">
+        
+        <!-- Dice Roller Box -->
+        <div class="dice-box">
+          <h2 class="section-title">Roll the Die</h2>
+          <div class="dice-display" id="diceDisplay">
+            <img src="assets/dice/dice-1.png" id="diceImage" alt="Dice Face" class="dice-img">
+          </div>
+          <button id="btnRoll" class="btn btn-primary btn-roll">
+            🎲 Roll the Die!
+          </button>
+          <div class="roll-hint">Press <kbd>Space</kbd> or click to roll</div>
+        </div>
+
+        <!-- Players Panel -->
+        <div class="players-panel">
+          <h3 class="panel-title">Forest Adventurers</h3>
+          <div class="players-list" id="playersList">
+            <!-- Player cards rendered dynamically -->
+          </div>
+        </div>
+
+      </aside>
+
+    </main>
+  </div>
+
+  <!-- MODALS -->
+
+  <!-- Setup Modal -->
+  <div class="modal-overlay active" id="setupModal">
+    <div class="modal-card setup-card">
+      <div class="modal-header">
+        <img src="assets/icons/icon-owl.png" alt="Owl" class="modal-badge-icon">
+        <h2>Welcome to Autumn Forest!</h2>
+      </div>
+      <p class="modal-subtitle">Choose players and prepare for your ESL Speaking Journey</p>
+
+      <form id="setupForm" onsubmit="return false;">
+        <div class="form-group">
+          <label class="form-label">Number of Players / Teams:</label>
+          <div class="player-count-selector">
+            <button type="button" class="count-btn active" data-count="2">2 Players</button>
+            <button type="button" class="count-btn" data-count="3">3 Players</button>
+            <button type="button" class="count-btn" data-count="4">4 Players</button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Customize Player Teams:</label>
+          <div class="team-inputs" id="teamInputs">
+            <!-- Input rows built by JS -->
+          </div>
+        </div>
+
+        <button type="submit" id="btnStartGame" class="btn btn-primary btn-large">
+          🌲 Start Forest Adventure!
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Question Modal -->
+  <div class="modal-overlay" id="questionModal">
+    <div class="modal-card question-card">
+      <div class="modal-header">
+        <img src="assets/tokens/token-fox.png" id="qModalAvatar" alt="Player" class="modal-player-avatar">
+        <div>
+          <span class="modal-tag">Speaking Question</span>
+          <h2 id="qModalPlayerName">Fox Team's Turn</h2>
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="question-space-badge" id="qSpaceNumber">Space #1</div>
+        <p class="question-text" id="qModalText">What is your favorite autumn activity?</p>
+      </div>
+      <div class="modal-footer">
+        <button id="btnCloseQuestion" class="btn btn-primary">
+          Got it! (Next Turn) →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Special Action Modal -->
+  <div class="modal-overlay" id="specialModal">
+    <div class="modal-card special-card">
+      <div class="modal-header">
+        <img src="assets/icons/icon-mushroom.png" id="specModalIcon" alt="Special Icon" class="special-action-icon">
+        <div>
+          <span class="modal-tag special-tag">Forest Event!</span>
+          <h2 id="specModalTitle">Mushroom Patch!</h2>
+        </div>
+      </div>
+      <div class="modal-body">
+        <p class="special-text" id="specModalText">Slip on a damp mushroom. Go back 2 spaces!</p>
+      </div>
+      <div class="modal-footer">
+        <button id="btnCloseSpecial" class="btn btn-primary">
+          Continue →
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Victory Modal -->
+  <div class="modal-overlay" id="victoryModal">
+    <div class="modal-card victory-card">
+      <div class="confetti-container" id="confettiContainer"></div>
+      <div class="modal-header">
+        <img src="assets/tokens/token-fox.png" id="vicModalAvatar" alt="Winner" class="victory-avatar">
+        <h2>🎉 Victory in the Forest!</h2>
+      </div>
+      <div class="modal-body">
+        <p class="winner-announcement">
+          <strong id="vicModalWinnerName">Fox Team</strong> reached the finish line first!
+        </p>
+        <p class="winner-subtext">You completed the entire Autumn Forest Path!</p>
+      </div>
+      <div class="modal-footer victory-buttons">
+        <button id="btnPlayAgain" class="btn btn-primary">
+          🔄 Play Again
+        </button>
+        <button id="btnChangeSetup" class="btn btn-secondary">
+          ⚙️ Change Players
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Rules Modal -->
+  <div class="modal-overlay" id="rulesModal">
+    <div class="modal-card rules-card">
+      <div class="modal-header">
+        <h2>📖 Game Rules</h2>
+      </div>
+      <div class="modal-body rules-body">
+        <ul>
+          <li><strong>Goal:</strong> Be the first team/player to navigate through space 20 at the end of the forest path!</li>
+          <li><strong>Rolling:</strong> Click <em>"Roll the Die!"</em> or press <kbd>Spacebar</kbd> on your turn to roll 1–6.</li>
+          <li><strong>Speaking Questions (💬):</strong> Answer the prompt out loud in English before your turn ends.</li>
+          <li><strong>Special Forest Events:</strong>
+            <ul>
+              <li>🍄 <strong>Mushroom:</strong> Move backward / forward or act out.</li>
+              <li>🌰 <strong>Acorn:</strong> Move forward or back space.</li>
+              <li>🍂 <strong>Swirling Leaf:</strong> Take a bonus roll!</li>
+              <li>🦔 <strong>Sleepy Hedgehog:</strong> Take a rest (skip next turn).</li>
+              <li>🦉 <strong>Wise Owl:</strong> Ask another player a question!</li>
+              <li>🐿️ <strong>Squirrel Sprint:</strong> Bonus forward move!</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button id="btnCloseRules" class="btn btn-primary">Close Rules</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Main JavaScript File -->
+  <script src="script.js"></script>
+</body>
+</html>

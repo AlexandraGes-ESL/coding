@@ -1,0 +1,125 @@
+{
+  "spaces": [
+    {
+      "id": 0,
+      "type": "start",
+      "text": "Start your journey through the Autumn Forest!"
+    },
+    {
+      "id": 1,
+      "type": "question",
+      "text": "What is your favorite autumn activity and why?"
+    },
+    {
+      "id": 2,
+      "type": "question",
+      "text": "Describe your favorite animal using 3 adjectives."
+    },
+    {
+      "id": 3,
+      "type": "special",
+      "icon": "mushroom",
+      "text": "🍄 Mushroom Patch! Slip on a damp mushroom. Go back 2 spaces.",
+      "action": { "move": -2 }
+    },
+    {
+      "id": 4,
+      "type": "question",
+      "text": "Talk about your best friend. What do you like doing together?"
+    },
+    {
+      "id": 5,
+      "type": "special",
+      "icon": "acorn",
+      "text": "🌰 Lucky Acorn! You found a crunchy treat. Move forward 1 space.",
+      "action": { "move": 1 }
+    },
+    {
+      "id": 6,
+      "type": "question",
+      "text": "What do you usually eat for breakfast on cold autumn mornings?"
+    },
+    {
+      "id": 7,
+      "type": "special",
+      "icon": "leaf",
+      "text": "🍂 Swirling Leaf! A gust of autumn wind boosts you! Take a bonus roll!",
+      "action": { "bonus": true }
+    },
+    {
+      "id": 8,
+      "type": "question",
+      "text": "Which season do you like best: Autumn, Winter, Spring, or Summer?"
+    },
+    {
+      "id": 9,
+      "type": "special",
+      "icon": "hedgehog",
+      "text": "🦔 Sleepy Hedgehog! You stopped to nap in warm leaves. Skip your next turn.",
+      "action": { "skip": true }
+    },
+    {
+      "id": 10,
+      "type": "question",
+      "text": "Tell us about something fun you did last weekend."
+    },
+    {
+      "id": 11,
+      "type": "special",
+      "icon": "owl",
+      "text": "🦉 Wise Owl! Wisdom share: Ask another player any question in English!",
+      "action": { "ask_other": true }
+    },
+    {
+      "id": 12,
+      "type": "question",
+      "text": "Name 3 things you can see in an autumn forest."
+    },
+    {
+      "id": 13,
+      "type": "special",
+      "icon": "squirrel-run",
+      "text": "🐿️ Squirrel Sprint! Dash along the treetops! Move forward 2 spaces.",
+      "action": { "move": 2 }
+    },
+    {
+      "id": 14,
+      "type": "question",
+      "text": "What is your favorite book, movie, or fairy tale?"
+    },
+    {
+      "id": 15,
+      "type": "special",
+      "icon": "mushroom",
+      "text": "🎭 Forest Charades! Act out your favorite animal without speaking for 20 seconds!",
+      "action": { "act_out": true }
+    },
+    {
+      "id": 16,
+      "type": "question",
+      "text": "What clothes do you wear when it rains outside?"
+    },
+    {
+      "id": 17,
+      "type": "special",
+      "icon": "acorn",
+      "text": "🌰 Heavy Acorn! Your backpack is too heavy. Go back 1 space.",
+      "action": { "move": -1 }
+    },
+    {
+      "id": 18,
+      "type": "question",
+      "text": "If you could have any superpower in the forest, what would it be?"
+    },
+    {
+      "id": 19,
+      "type": "question",
+      "text": "What are you looking forward to doing this month?"
+    },
+    {
+      "id": 20,
+      "type": "finish",
+      "text": "🎉 You made it through the Autumn Forest! Congratulations!"
+    }
+  ]
+}
