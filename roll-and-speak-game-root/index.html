@@ -12,7 +12,7 @@
   
   <style>
     /* ==========================================================================
-       Roll & Speak: Autumn Forest Path - Modern EdTech 2026 Single HTML Engine
+       Roll & Speak: Autumn Forest Path - Ultimate EdTech 2026 Single HTML Engine
        ========================================================================== */
     :root {
       --color-cream: #F5EFE2;
@@ -177,6 +177,7 @@
       gap: 8px;
       box-shadow: var(--shadow-sm);
       user-select: none;
+      text-decoration: none;
     }
 
     .btn:hover {
@@ -598,6 +599,88 @@
       border-radius: 6px;
     }
 
+    /* FOOTER / COPYRIGHT BAR */
+    .game-footer {
+      margin-top: 24px;
+      background: rgba(250, 246, 238, 0.95);
+      backdrop-filter: blur(10px);
+      border: 3px solid var(--color-mustard);
+      border-radius: var(--radius-md);
+      padding: 14px 24px;
+      box-shadow: var(--shadow-md);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .footer-left {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 18px;
+      color: var(--color-brown);
+    }
+
+    .footer-author {
+      font-weight: bold;
+      color: var(--color-terracotta);
+      font-family: var(--font-heading);
+      font-size: 24px;
+    }
+
+    .footer-links {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .footer-link-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 17px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .btn-boosty {
+      background: #F16232;
+      color: #FFFFFF;
+      border: 2px solid #D14B20;
+    }
+
+    .btn-boosty:hover {
+      background: #E05120;
+      transform: translateY(-2px);
+    }
+
+    .btn-telegram {
+      background: #24A1DE;
+      color: #FFFFFF;
+      border: 2px solid #1C87C2;
+    }
+
+    .btn-telegram:hover {
+      background: #1B8DC2;
+      transform: translateY(-2px);
+    }
+
+    .footer-notice {
+      width: 100%;
+      text-align: center;
+      font-size: 15px;
+      color: var(--color-olive-dark);
+      border-top: 1px dashed var(--color-sand);
+      padding-top: 8px;
+      margin-top: 4px;
+    }
+
     /* MODALS */
     .modal-overlay {
       position: fixed;
@@ -909,7 +992,7 @@
         width: 44px;
         height: 44px;
       }
-      .game-header {
+      .game-header, .game-footer {
         flex-direction: column;
         align-items: flex-start;
       }
@@ -970,6 +1053,27 @@
         </div>
       </aside>
     </main>
+
+    <!-- FOOTER WITH AUTHOR INFO & LINKS -->
+    <footer class="game-footer">
+      <div class="footer-left">
+        <span>Created with ❤️ by</span>
+        <span class="footer-author">@AlexandraGes_ESL</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="https://boosty.to/alexandrages_esl" target="_blank" rel="noopener noreferrer" class="footer-link-btn btn-boosty">
+          🚀 Boosty Channel
+        </a>
+        <a href="https://t.me/alexandragesESL" target="_blank" rel="noopener noreferrer" class="footer-link-btn btn-telegram">
+          📢 Telegram Channel
+        </a>
+      </div>
+
+      <div class="footer-notice">
+        © 2026 Roll &amp; Speak: Autumn Forest Path. All rights reserved. Materials created for educational use.
+      </div>
+    </footer>
   </div>
 
   <!-- MODALS -->
